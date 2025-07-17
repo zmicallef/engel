@@ -1,0 +1,91 @@
+<div class="header-{{ section.id }}">
+  <div class="header-shop-name-{{ section.id }}">
+    <a href="../">{{ section.settings.header-shop-name }}</a>
+  </div>
+  <div class="header-shop-name-{{ section.id }}" style="display:{{ section.settings.header-type }}">
+    <a href="../"><img src='{{ section.settings.header-image.src | image_url: width: 1080 }}'></a>
+  </div>
+  <div class="header-cart-button-{{ section.id }}">
+    <a href="../cart">Cart ({{ cart.item_count }}) {{ cart.total_price | money_without_currency }} AU</a>
+  </div>
+</div>
+
+<script>
+
+  var headerItem = document.getElementsByClassName('header-shop-name-{{ section.id }}');
+  if (headerItem[1].style.display == "none") {
+    headerItem[0].style.display = "block";
+  } else {
+    headerItem[0].style.display = "none";
+  };
+  
+  
+</script>
+
+{% style %}
+  .header-{{ section.id }} {
+    position:fixed;
+    display:flex;
+    top:0;
+    left:0;
+    width:100vw;
+    overflow:hidden;
+    justify-content:space-between;
+    box-sizing:border-box;
+    padding:1em 0 1em 0;
+    z-index:2;
+    font-size: {{ section.settings.header-shop-font-scale }}%;
+    color: {{settings.color-scheme-title}};
+  }
+  .header-shop-name-{{ section.id }} img {
+    max-width: 100px;
+  }
+  .header-shop-name-{{ section.id }} a {
+    padding:1em;
+  }
+  .header-cart-button-{{ section.id }} a {
+    padding:1em;
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "header-shop-name",
+        "default": "ENGEL00",
+        "label": "Shop Name"
+      },
+      {
+        "type": "range",
+        "id": "header-shop-font-scale",
+        "min": 100,
+        "max": 200,
+        "default": 150,
+        "label": "Shop Name Scale"
+      },
+      {
+        "type": "radio",
+        "id": "header-type",
+        "label": "Text/Image Header",
+        "options": [
+          {
+            "label": "Text",
+            "value": "none"
+          },
+          {
+            "label": "Image",
+            "value": "block"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "header-image",
+        "label": "Logo Image"
+      }
+    ]
+  }
+{% endschema %}

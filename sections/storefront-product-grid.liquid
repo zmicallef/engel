@@ -1,0 +1,213 @@
+<div class="storefront-product-container-{{ section.id }}">
+  
+  {% for product in collections["all"].products %}
+  
+    <a href="{{ product.url }}" class="storefront-product-item-{{ section.id }} {{ product.collections[0].title | downcase }} {{ product.available }}">
+      
+      <div class="storefront-product-item-image-{{ section.id }}">
+        <div {% if product.images[1] %} class="imageToggleFirst" {% endif %}>{{ product.images.first.src | image_url: width: '1080' | image_tag }}</div>
+        {% if product.images[1] %}
+          <div class="imageToggleSecond">{{ product.images[1].src | image_url: width: '1080' | image_tag }}</div>
+        {% endif %}
+      </div>
+
+      <div class="storefront-product-item-title-{{ section.id }}">
+        {{ product.title }}
+      </div>
+      
+      <div class="storefront-product-item-title-{{ section.id }}">
+        {% if product.available %}  
+          {{ product.price | money_without_currency }} AU
+        {% else %}
+          Sold Out
+        {% endif %}
+      </div> 
+    
+    </a>
+  
+  {% endfor %}
+  
+</div>
+
+<script>
+
+    var soldOut = document.getElementsByClassName('{{ section.settings.show-soldout }}'); 
+    if (soldOut.length > 1) {
+      for (var i = 0; i < soldOut.length; i++ ) {
+        soldOut[i].style.display = 'none';
+      };
+    };
+    var allItems = document.getElementsByClassName('storefront-product-item-{{ section.id }}');  
+    var url = window.location.search;
+    var urlParams = new URLSearchParams(url);
+    var filter = urlParams.get('filter');
+    var filterApplied = filter.toString().toLowerCase();
+    if (filterApplied !== 'undefined' || filterApplied !== null) {
+    for (var i = 0; i < allItems.length; i++) {
+        if (!allItems[i].classList.contains(filterApplied)) {
+          allItems[i].style.display = 'none';
+        }
+      };
+    };
+
+</script>
+
+{% style %}
+  
+  .storefront-product-container-{{ section.id }} {
+    position:absolute;
+    top:0;
+    right:0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing:border-box;
+    padding:0;
+    padding-left:10vw;
+    margin:0;
+    overflow:scroll;
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+      padding-top:5em;
+      padding-bottom:15em;
+      padding-left:0;
+    }
+  }
+  .storefront-product-container-{{ section.id }}::-webkit-scrollbar {
+    display: none;
+  }
+  .storefront-product-item-{{ section.id }} {
+    flex: 0 0 {{ section.settings.storefront-columns }}%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-sizing:border-box;
+    padding:{{ section.settings.storefront-item-padding }}em;
+    touch-action: manipulation;
+    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+      flex: 0 0 100%;
+      margin-bottom: 2em;
+    }
+  }
+  .storefront-product-item-{{ section.id }}:hover {
+    opacity: 0.9;
+    cursor:pointer;
+  }
+  .storefront-product-item-{{ section.id }} .imageToggleSecond { 
+    display: none; 
+  }
+  .storefront-product-item-{{ section.id }}:hover .imageToggleFirst {
+    display:none;
+  }
+  .storefront-product-item-{{ section.id }}:hover .imageToggleSecond {
+    display:block;
+  }
+  .storefront-product-item-{{ section.id }}:hover .storefront-product-item-title-{{ section.id }} {
+    background-color:{{settings.color-scheme-button-bg}};
+    color:{{settings.color-scheme-button-text}};
+  }
+  .storefront-product-item-image-{{ section.id }} img {
+    width:100%;
+    height:auto;
+    aspect-ratio: {{ section.settings.storefront-img-ratio }};
+    object-fit:cover;
+  }
+  .storefront-product-item-title-{{ section.id }} {
+    width:fit-content;
+    color:{{settings.color-scheme-text}};
+  }
+  .clear-filter-button {
+    display:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    margin:1em;
+  }
+  
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Product Grid",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "storefront-columns",
+        "options": [
+          {
+            "label": "2",
+            "value": "50"
+          },
+          {
+            "label": "3",
+            "value": "33.3"
+          },
+          {
+            "label": "4",
+            "value": "25"
+          },
+          {
+            "label": "5",
+            "value": "20"
+          }
+        ],
+        "label": "Storefront Columns"
+      },
+      {
+        "type": "range",
+        "id": "storefront-item-padding",
+        "label": "Storefront Item Padding",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "radio",
+        "id": "storefront-img-ratio",
+        "label": "Image Aspect Ratio",
+        "options": [
+          {
+            "label": "1:1",
+            "value": "1/1"
+          },
+          {
+            "label": "2:3",
+            "value": "2/3"
+          },
+          {
+            "label": "4:5",
+            "value": "4/5"
+          },
+          {
+            "label": "16:9",
+            "value": "16/9"
+          },
+          {
+            "label": "16:10",
+            "value": "16/10"
+          }
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "show-soldout",
+        "label": "Show Soldout Items",
+        "options": [
+          {
+            "label": "show",
+            "value": ""
+          },
+          {
+            "label": "hide",
+            "value": "false"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

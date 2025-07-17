@@ -1,0 +1,127 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Themekit template theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://github.com/Shopify/themekit",
+    "theme_support_url": "https://github.com/Shopify/themekit/issues"
+  },
+  {
+    "name": "Text Settings",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Bodycopy Fontface",
+        "default": "inter_n3"
+      },
+      {
+        "type": "range",
+        "id": "type_body_spacing",
+        "label": "Bodycopy Font Spacing",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "default": 2
+      },
+      {
+        "type": "range",
+        "id": "type_body_lineheight",
+        "min": 9,
+        "max": 15,
+        "step": 1,
+        "label": "Bodycopy Font Lineheight",
+        "default": 12
+      },
+      {
+        "type": "range",
+        "id": "type_body_weight",
+        "label": "Bodycopy Font Weight",
+        "min": 200,
+        "max": 800,
+        "step": 100,
+        "default": 400
+      },
+            {
+        "type": "range",
+        "id": "type_body_size",
+        "label": "Bodycopy Font Size",
+        "min": 5,
+        "max": 15,
+        "step": 1,
+        "default": 7
+      },
+    ]
+  },
+  {
+    "name": "Color Scheme",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color-scheme-title",
+        "label": "Title Color"
+      },
+      {
+        "type": "color",
+        "id": "color-scheme-text",
+        "label": "Text Color"
+      },
+      {
+        "type": "color",
+        "id": "color-scheme-button-bg",
+        "label": "Button Background Color"
+      },
+      {
+        "type": "color",
+        "id": "color-scheme-button-text",
+        "label": "Button text Color"
+      },
+      {
+        "type": "color",
+        "id": "color-scheme-background",
+        "label": "Background Color"
+      }
+    ]
+  },
+  {
+    "name": "Background Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background-image",
+        "label": "Background Image"
+      },
+      {
+        "type": "radio",
+        "id": "background-image-visibility",
+        "label": "Toggle Background Image",
+        "options": [
+          {
+            "label": "Show",
+            "value": "flex"
+          },
+          {
+            "label": "Hide",
+            "value": "none"
+          },
+        ]
+      },
+      {
+        "type": "radio",
+        "id": "background-image-blur",
+        "label": "Toggle Background Blur",
+        "options": [
+          {
+            "label": "Blur",
+            "value": "blur(10px)"
+          },
+          {
+            "label": "No Blur",
+            "value": ""
+          }
+        ]
+      }
+    ]
+  }
+]

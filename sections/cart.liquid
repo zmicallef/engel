@@ -1,0 +1,144 @@
+<div class="cart-container-{{ section.id }}">
+
+{% if cart.item_count > 0 %}
+  <form action="/cart" method="post" novalidate>
+    <table>
+      <thead>
+        <th>ITEM</th>
+        <th>VARIANT</th>
+        <th>QTY</th>
+        <th></th>
+        <th>TOTAL</th>
+      </thead>
+      <tbody>
+        {% for item in cart.items %}
+          <tr>
+            <td>
+              <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
+            </td>
+            <td>
+            {% if item.variant.title != "Default Title" %}
+              <a href="{{ item.url }}">{{ item.variant.title }}</a>
+            {% endif %}
+            </td>
+            <td>
+              <a>{{ item.quantity }}</a>
+            </td>
+            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.variant.id }}"">
+              <a>Remove</a>
+            </td>
+            <td>
+              {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
+                {{ item.line_price | money }}
+              {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="subtotal">
+      <p>Sub Total : {{ cart.total_price | money_without_currency }} AU + Shipping</p>
+      <button type="submit" name="checkout">CHECKOUT</button>
+    </div>
+  </form>
+  
+{% else %}
+
+  <div class="cart-empty">
+    Cart is empty
+  </div>
+  
+{% endif %}
+
+</div>
+
+<script>
+
+  function removeItemFromCart(lineItemId) {
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: lineItemId,
+      quantity: 0
+    })
+  })
+  .then(response => response.json())
+  .then(cart => {
+    console.log("Item removed:", cart);
+    window.location.reload();
+  })
+  .catch(error => {
+    console.error("Error removing item:", error);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const removeButtons = document.querySelectorAll('.remove-item-button');
+  removeButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      const lineItemId = event.currentTarget.getAttribute('data-line-item-id');
+      removeItemFromCart(lineItemId);
+      button.innerHTML = "Removing ...";
+    });
+  });
+});
+
+  
+</script>
+
+{% style %}
+.cart-container-{{ section.id }} {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+    width:96vw;
+  }
+}
+
+.cart-container-{{ section.id }} td {
+  background-color: {{settings.color-scheme-button-bg}};
+  color:{{settings.color-scheme-button-text}};
+  box-sizing: border-box;
+  padding:1em;
+  width:15vw;
+  text-align: center;
+  @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+    width:19vw;
+  }
+}
+
+.cart-container-{{ section.id }} .subtotal {
+  text-align: center;
+  color: {{settings.color-scheme-text}};
+}
+
+.cart-container-{{ section.id }} button {
+  background-color: {{settings.color-scheme-button-bg}};
+  border: none;
+  color: {{settings.color-scheme-button-text}};
+  font-family: var(--font-body-family);
+  font-weight:500;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100%;
+  cursor: pointer;
+  letter-spacing: var(--font-body-spacing);
+}
+.cart-container-{{ section.id }} button:hover {
+  background-color:white;
+  color:{{settings.color-scheme-text}};
+}
+.remove-item-button {
+  cursor:pointer;
+  z-index:2;
+}
+{% endstyle %}

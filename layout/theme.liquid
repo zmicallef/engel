@@ -1,0 +1,111 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link type="text/css" href="{{ 'styles.css' | asset_url }}" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+  {{ content_for_header }}
+  {{ 'application.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'application.js' | asset_url | script_tag }}
+  
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+  
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %} 
+  
+  {% style %}
+    :root {
+      --font-body-size: {{ settings.type_body_size | divided_by: 10.0 }}em;
+      --font-body-spacing: {{ settings.type_body_spacing | divided_by: 100.0 }}rem;
+      --font-body-weight: {{ settings.type_body_weight }};
+      --font-body-lineheight: {{ settings.type_body_lineheight | divided_by: 10.0 }};
+      --background-color: {{ settings.color-scheme-background }};
+      @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+        --font-body-size: {{ settings.type_body_size | divided_by: 9.0 }}em;
+      }
+    }
+    @font-face {
+      font-family: "Main";
+      src:
+        url("{{ settings.type_body_font | font_url }}")
+    }
+    * {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    html {
+      margin: 0;
+      padding:0;
+      -ms-overflow-style: none;  
+      scrollbar-width: none; 
+      overflow:hidden;
+      width:100vw;
+      height:100vh;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+        letter-spacing: var(--font-body-spacing);
+        line-height: var(--font-body-lineheight);
+        font-family: "Main";
+        font-size: var(--font-body-size);
+        font-weight: var(--font-body-weight);
+        background-color: var(--background-color);
+        overflow:hidden;
+    }
+    .selectDisable {
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+    .selectEnable { 
+      -webkit-user-select: text;
+      -khtml-user-select: text;
+      -moz-user-select: text;
+      -o-user-select: text;
+      user-select: text;
+    }
+    .background-image {
+      display: {{ settings.background-image-visibility }};
+      width:100vw;
+      height:100vh;
+      position:fixed;
+      pointer-events:none;
+      z-index:-1;
+      justify-content:center;
+      align-items:center;
+      filter:{{ settings.background-image-blur }};
+    }
+    .background-image img {
+      width:100%;
+      @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+        width: auto;
+        height:100%;
+      }
+    }
+  {% endstyle %}
+</head>
+
+<body>
+  <main role="main">
+    {{ content_for_layout }}
+  </main>
+  <div class="background-image">
+    <img src="{{ settings.background-image.src | image_url: width: 1080 }}">
+  </div>
+</body>
+
+</html>
