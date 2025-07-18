@@ -29,8 +29,8 @@
       "storefront-product-grid": {
         "type": "storefront-product-grid",
         "settings": {
-          "storefront-columns": "33.3",
-          "storefront-item-padding": 3,
+          "storefront-columns": "25",
+          "storefront-item-padding": 2,
           "storefront-img-ratio": "2/3",
           "show-soldout": ""
         }
