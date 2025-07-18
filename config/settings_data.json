@@ -53,8 +53,8 @@
       "header-filter": {
         "type": "header-filter",
         "settings": {
-          "filter-dropdown-font-scale": 120,
-          "product_filter_visible": "none"
+          "filter-dropdown-font-scale": 100,
+          "product_filter_visible": "flex"
         }
       },
       "cart": {
