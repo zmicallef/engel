@@ -30,7 +30,7 @@
         "type": "storefront-product-grid",
         "settings": {
           "storefront-columns": "25",
-          "storefront-item-padding": 2,
+          "storefront-item-padding": 3,
           "storefront-img-ratio": "2/3",
           "show-soldout": ""
         }
@@ -38,7 +38,7 @@
       "header": {
         "type": "header",
         "settings": {
-          "header-shop-name": "Store Name",
+          "header-shop-name": "ENGEL00",
           "header-shop-font-scale": 120,
           "header-type": "none",
           "header-image": "shopify://shop_images/theme_cover_image.jpg"
