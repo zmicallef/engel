@@ -73,7 +73,7 @@
             <form method="post" action="/cart/add" target="dummyframe" onsubmit="processForm()">
               <input name="id" id="checkoutButton" value="{{ product.first_available_variant.id }}" type="hidden" />
               <br>
-              <input class="product-add-button-{{ section.id }}" name="add" value="ADD TO CART" type="submit"/>
+              <span class="product-add-button-{{ section.id }}" name="add" value="ADD TO CART" type="submit">Add to cart</span>
             </form>
             </a>
         {% else %}
