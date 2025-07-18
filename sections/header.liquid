@@ -6,7 +6,7 @@
     <a href="../"><img src='{{ section.settings.header-image.src | image_url: width: 1080 }}'></a>
   </div>
   <div class="header-cart-button-{{ section.id }}">
-    <a href="../cart">Cart ({{ cart.item_count }}) {{ cart.total_price | money_without_currency }} AU</a>
+    <a href="../cart">Cart ({{ cart.item_count }}) {{ cart.total_price | money_without_currency }} $</a>
   </div>
 </div>
 
