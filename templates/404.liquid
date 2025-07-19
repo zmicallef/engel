@@ -1,2 +1,52 @@
-<h1>{{ 'general.404.title' | t }}</h1>
-<p>{{ 'general.404.subtext_html' | t }}</p>
+{% section 'header' %}
+
+<div class="container-404-{{ section.id }}">
+    <div class="message-404-{{ section.id }}">{{ 'general.404.title' | t }}</div>
+    <div class="subtext-404-{{ section.id }}">{{ 'general.404.subtext_html' | t }}</div>
+    <a href="/" class="button-404-{{ section.id }}">RETURN</a>
+</div>
+
+{% style %}
+
+.container-404-{{ section.id }} {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:2em;
+  @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+    width:96vw;
+  }
+}
+
+.message-404-{{ section.id }} {
+
+}
+
+.subtext-404-{{ section.id }} {
+
+}
+
+.button-404-{{ section.id }} {
+  border:0;
+  border-radius:0;
+  padding:0;
+  margin:0;
+  font-size:95%;
+  box-sizing:border-box;
+  font-family: var(--font-body-family);
+  font-weight:500;
+  background-color:{{settings.color-scheme-button-bg}};
+  color:{{settings.color-scheme-button-text}};
+  letter-spacing: var(--font-body-spacing);
+}
+
+.button-404-{{ section.id }}:hover {
+  background-color:white;
+  color:{{settings.color-scheme-text}};
+  cursor:pointer
+}
+
+{% endstyle %}
