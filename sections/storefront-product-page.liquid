@@ -321,12 +321,8 @@
     touchendX = e.changedTouches[0].screenX;
     checkDirection()
   });
-  function addCart(){
-    processForm();
-    return false;
-  }
   document.addEventListener('DOMContentLoaded', function() {
-    addCart();
+    processForm()
     const addButton = document.querySelectorAll('.product-add-button-{{ section.id }}');
     addButton.forEach(function(button) {
       button.addEventListener('click', function(event) {
