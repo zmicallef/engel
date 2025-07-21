@@ -54,34 +54,32 @@
 
 <script>
 
-function removeItemFromCart(lineItemId) {
-  fetch('/cart/change.js', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id: lineItemId,
-      quantity: 0
-    })
-  })
-  .then(response => response.json())
-  .then(cart => {
-    console.log("Item removed:", cart);
-    window.location.reload();
-  })
-  .catch(error => {
-    console.error("Error removing item:", error);
-  });
-};
-
 document.addEventListener('DOMContentLoaded', function() {
   const removeButtons = document.querySelectorAll('.remove-item-button');
   removeButtons.forEach(function(button) {
     button.addEventListener('click', function(event) {
       const lineItemId = event.currentTarget.getAttribute('data-line-item-id');
-      removeItemFromCart(lineItemId);
       button.innerHTML = "Removing ...";
+      function removeItemFromCart(lineItemId) {
+        fetch('/cart/change.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: lineItemId,
+            quantity: 0
+          })
+        })
+        .then(response => response.json())
+        .then(cart => {
+          console.log("Item removed:", cart);
+          window.location.reload();
+        })
+        .catch(error => {
+          console.error("Error removing item:", error);
+        });
+      };
     });
   });
 });
