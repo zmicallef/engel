@@ -313,11 +313,11 @@
       if (touchendX < touchstartX) plusSlides(-1, 0);
       if (touchendX > touchstartX) plusSlides(1, 0);
     };
-    document.addEventListener('touchstart', e => {
-      touchstartX = e.changedTouches[0].screenX
+    slides.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX;
     });
-    document.addEventListener('touchend', e => {
-      touchendX = e.changedTouches[0].screenX
+    slides.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX;
       checkDirection()
     });
     document.addEventListener('DOMContentLoaded', function() {
