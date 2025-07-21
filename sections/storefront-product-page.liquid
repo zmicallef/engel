@@ -270,67 +270,67 @@
     modal.style.display = "block";
     modalClose.style.display = "block";    
     modalImg.src = img[i].src;
-  }
+  };
   modal.onclick = function() {
     modal.style.display = "none";
     modalClose.style.display = "none";
-  }
+  };
   const variantList = document.querySelectorAll('.VariantSelect')
   function updateVariant() {
     var checkoutButton = document.getElementById('checkoutButton')
     var variantSelected = variantList[0].value;
     checkoutButton.setAttribute("value", variantSelected);
   };
-    var url = window.location.search;
-    var urlParams = new URLSearchParams(url);
-    var variantUrl = urlParams.get('variant');
-    if (variantUrl === 'undefined' || variantUrl === null) {
-    } else {
-      variantList[0].value = variantUrl;
+  var url = window.location.search;
+  var urlParams = new URLSearchParams(url);
+  var variantUrl = urlParams.get('variant');
+  if (variantUrl === 'undefined' || variantUrl === null) {
+  } else {
+    variantList[0].value = variantUrl;
+  };
+  var slideIndex = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+  showSlides(1, 0);
+  function plusSlides(n, slideshowIndex) {
+    showSlides(slideIndex[slideshowIndex] += n, slideshowIndex);
+  };
+  function showSlides(n, slideshowIndex) {
+    var i;
+    var slides = document.getElementsByClassName("product-image-{{ section.id }}");
+    if (n > slides.length) {
+      slideIndex[slideshowIndex] = 1;
     };
-    var slideIndex = [1, 1, 1, 1, 1, 1, 1, 1, 1];
-    showSlides(1, 0);
-    function plusSlides(n, slideshowIndex) {
-      showSlides(slideIndex[slideshowIndex] += n, slideshowIndex);
-    }
-    function showSlides(n, slideshowIndex) {
-      var i;
-      var slides = document.getElementsByClassName("product-image-{{ section.id }}");
-      if (n > slides.length) {
-        slideIndex[slideshowIndex] = 1;
-      }
-      if (n < 1) {
-        slideIndex[slideshowIndex] = slides.length;
-      }
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slides[slideIndex[slideshowIndex] - 1].style.display = "flex";
+    if (n < 1) {
+      slideIndex[slideshowIndex] = slides.length;
     };
-    let touchstartX = 0;
-    let touchendX = 0;
-    function checkDirection() {
-      if (touchendX < touchstartX) plusSlides(-1, 0);
-      if (touchendX > touchstartX) plusSlides(1, 0);
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
     };
-    slides.addEventListener('touchstart', e => {
-      touchstartX = e.changedTouches[0].screenX;
-    });
-    slides.addEventListener('touchend', e => {
-      touchendX = e.changedTouches[0].screenX;
-      checkDirection()
-    });
-    document.addEventListener('DOMContentLoaded', function() {
-      const addButton = document.querySelectorAll('.product-add-button-{{ section.id }}');
-      addButton.forEach(function(button) {
-        button.addEventListener('click', function(event) {
-          button.value = "Adding ...";
-          setTimeout(() => {
-            window.location.reload();
-          }, 750);
-        });
+    slides[slideIndex[slideshowIndex] - 1].style.display = "flex";
+  };
+  let touchstartX = 0;
+  let touchendX = 0;
+  function checkDirection() {
+    if (touchendX < touchstartX) plusSlides(-1, 0);
+    if (touchendX > touchstartX) plusSlides(1, 0);
+  };
+  slides.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+  });
+  slides.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    checkDirection()
+  });
+  document.addEventListener('DOMContentLoaded', function() {
+    const addButton = document.querySelectorAll('.product-add-button-{{ section.id }}');
+    addButton.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        button.value = "Adding ...";
+        setTimeout(() => {
+          window.location.reload();
+        }, 750);
       });
     });
+  });
   
 </script>
 
