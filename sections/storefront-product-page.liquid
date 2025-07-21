@@ -70,7 +70,7 @@
         {% if product.available %}  
           <a>
             <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-            <form method="post" action="/cart/add" target="dummyframe" onsubmit="addCart()">
+            <form method="post" action="/cart/add" target="dummyframe" onsubmit="processForm();return false">
               <input name="id" id="checkoutButton" value="{{ product.first_available_variant.id }}" type="hidden" />
               <br>
               <input class="product-add-button-{{ section.id }}" name="add" value="ADD TO CART" type="submit"/>
@@ -321,15 +321,13 @@
     touchendX = e.changedTouches[0].screenX;
     checkDirection()
   });
-  function addCart() {
-    processForm(() => window.location.reload());
-  }
   document.addEventListener('DOMContentLoaded', function() {
     const addButton = document.querySelectorAll('.product-add-button-{{ section.id }}');
     addButton.forEach(function(button) {
       button.addEventListener('click', function(event) {
         button.value = "Adding ...";
         setTimeout(() => {
+          window.location.reload();
         }, 750);
       });
     });
