@@ -10,7 +10,7 @@
     
     <div class="slideshow-container-{{ section.id }} selectDisable">
       
-      <div class="toggle-image-{{ section.id }}">
+      <div id="imageToggle" class="toggle-image-{{ section.id }}">
 
         {% if product.images.size > 1 %}
           <div class="slideshow-change-{{ section.id }}" onclick="plusSlides(-1, 0)">
