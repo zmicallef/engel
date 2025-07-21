@@ -70,7 +70,7 @@
         {% if product.available %}  
           <a>
             <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-            <form method="post" action="/cart/add" target="dummyframe" onsubmit="processForm();return false">
+            <form method="post" action="/cart/add" target="dummyframe" onsubmit="processForm();=>window.location.reload();">
               <input name="id" id="checkoutButton" value="{{ product.first_available_variant.id }}" type="hidden" />
               <br>
               <input class="product-add-button-{{ section.id }}" name="add" value="ADD TO CART" type="submit"/>
@@ -327,7 +327,6 @@
       button.addEventListener('click', function(event) {
         button.value = "Adding ...";
         setTimeout(() => {
-          window.location.reload();
         }, 750);
       });
     });
