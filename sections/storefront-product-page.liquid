@@ -307,16 +307,17 @@
     };
     slides[slideIndex[slideshowIndex] - 1].style.display = "flex";
   };
+  const imgElement = document.getElementById('imageToggle')
   let touchstartX = 0;
   let touchendX = 0;
   function checkDirection() {
     if (touchendX < touchstartX) plusSlides(-1, 0);
     if (touchendX > touchstartX) plusSlides(1, 0);
   };
-  slides.addEventListener('touchstart', e => {
+  imgElement.addEventListener('touchstart', e => {
     touchstartX = e.changedTouches[0].screenX;
   });
-  slides.addEventListener('touchend', e => {
+  imgElement.addEventListener('touchend', e => {
     touchendX = e.changedTouches[0].screenX;
     checkDirection()
   });
