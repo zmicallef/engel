@@ -265,20 +265,16 @@
   var modalClose = document.getElementById("modalClose");
   var img = document.getElementsByClassName("product-image-{{ section.id }}");
   var modalImg = document.getElementById("imgModalSrc");
-  
-    
   function modalExpand(i){
     i-=1;
     modal.style.display = "block";
     modalClose.style.display = "block";    
     modalImg.src = img[i].src;
   }
-  
   modal.onclick = function() {
     modal.style.display = "none";
     modalClose.style.display = "none";
   }
-
   const variantList = document.querySelectorAll('.VariantSelect')
   function updateVariant() {
     var checkoutButton = document.getElementById('checkoutButton')
@@ -292,7 +288,7 @@
     } else {
       variantList[0].value = variantUrl;
     };
-  var slideIndex = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+    var slideIndex = [1, 1, 1, 1, 1, 1, 1, 1, 1];
     showSlides(1, 0);
     function plusSlides(n, slideshowIndex) {
       showSlides(slideIndex[slideshowIndex] += n, slideshowIndex);
@@ -311,6 +307,19 @@
       }
       slides[slideIndex[slideshowIndex] - 1].style.display = "flex";
     };
+    let touchstartX = 0;
+    let touchendX = 0;
+    function checkDirection() {
+      if (touchendX < touchstartX) plusSlides(-1, 0);
+      if (touchendX > touchstartX) plusSlides(1, 0);
+    };
+    document.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX
+    });
+    document.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX
+      checkDirection()
+    });
     document.addEventListener('DOMContentLoaded', function() {
       const addButton = document.querySelectorAll('.product-add-button-{{ section.id }}');
       addButton.forEach(function(button) {
