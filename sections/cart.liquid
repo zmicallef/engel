@@ -57,10 +57,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   const removeButtons = document.querySelectorAll('.remove-item-button');
   removeButtons.forEach(function(button) {
-    button.addEventListener('click', function(event) {
-      const lineItemId = event.currentTarget.getAttribute('data-line-item-id');
-      button.innerHTML = "Removing ...";
-      function removeItemFromCart(lineItemId) {
+    button.addEventListener('click',       function removeItemFromCart(lineItemId) {
+        const lineItemId = event.currentTarget.getAttribute('data-line-item-id');
+        button.innerHTML = "Removing ...";
         fetch('/cart/change.js', {
           method: 'POST',
           headers: {
@@ -79,7 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
           console.error("Error removing item:", error);
         });
-      };
+      }; {
+      
+
     });
   });
 });
