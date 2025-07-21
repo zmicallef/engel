@@ -24,7 +24,7 @@
             <td>
               <a>{{ item.quantity }}</a>
             </td>
-            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.variant.id }}"">
+            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.variant.id }}">
               <a>Remove</a>
             </td>
             <td>
@@ -68,11 +68,11 @@ function removeItemFromCart(lineItemId) {
   .then(response => response.json())
   .then(cart => {
     console.log("Item removed:", cart);
+    window.location.reload();
   })
   .catch(error => {
     console.error("Error removing item:", error);
   });
-  window.location.reload();
 };
 
 document.addEventListener('DOMContentLoaded', function() {
