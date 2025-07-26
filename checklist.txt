@@ -1,0 +1,15 @@
+before we move onto requirements checklist i wanna iron out a couple issues that i cannot figure out lol 
+
+* having issues with the remove from cart button, sometimes it removes other variants other than the one clicked ?? i am unsure
+e.g. the first coat with the size variants, if you add multiple sizes/colours and click remove in cart it sometimes removes multiple
+
+* would be good to have a button that removes 1 from the cart, unsure how to do this 
+
+* i want to add auto currency detection if possible, might require a cookies popup???
+
+* want to add shipping estimate thingy to cart page 
+
+i think thats it for current, once all thats implemented we can start handing it out and get feedback as we dev
+
+
+https://shopify.dev/docs/storefronts/themes/store/requirements
