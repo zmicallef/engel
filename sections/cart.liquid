@@ -44,10 +44,42 @@
     </div>
   </form>
   
+  <div class="shipping-calculator">
+    <h3>ESTIMATE SHIPPING</h3>
+    <div id="shipping-calculator-form">
+      <div class="shipping-calculator__input">
+        <label for="address_country">COUNTRY</label>
+        <select id="address_country" name="address[country]" data-default="{{ shop.country }}">{{ all_country_option_tags }}</select>
+      </div>
+
+      <div id="address_state_container" class="shipping-calculator__input" style="display:none;">
+        <label for="address_state" id="address_state_label">STATE</label>
+        <select id="address_state" name="address[province]"></select>
+      </div>
+
+      <div id="address_zip_container" class="shipping-calculator__input" style="display:none;">
+        <label for="address_zip">POSTAL/ZIP</label>
+        <input type="text" id="address_zip" name="address[zip]">
+      </div>
+
+      <button type="button" id="calculate-shipping" style="display:none;">CALCULATE SHIPPING</button>
+
+      <div id="shipping-rates-container" style="display:none;">
+        <h4>SHIPPING RATES</h4>
+        <ul id="shipping-rates-list"></ul>
+      </div>
+
+      <div id="shipping-errors-container" class="errors" style="display:none;">
+        <h4>ERRORS</h4>
+        <div id="shipping-errors"></div>
+      </div>
+    </div>
+  </div>
+
 {% else %}
 
   <div class="cart-empty">
-    Cart is empty
+    CART IS EMPTY
   </div>
   
 {% endif %}
@@ -145,9 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
-  
 </script>
+
+<script src="{{ 'shipping-calculator.js' | asset_url }}" defer="defer"></script>
 
 {% style %}
 .cart-container-{{ section.id }} {
@@ -201,6 +233,10 @@ document.addEventListener('DOMContentLoaded', function() {
   cursor:pointer;
   z-index:2;
 }
+.remove-item-button:hover {
+  background-color:white;
+  color:{{settings.color-scheme-text}};
+}
 
 .quantity-increment,
 .quantity-decrement {
@@ -211,5 +247,84 @@ document.addEventListener('DOMContentLoaded', function() {
 .quantity-decrement.disabled {
   opacity: 0;
   cursor: default;
+}
+
+.shipping-calculator {
+  width: 100%;
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.shipping-calculator__input {
+  margin-bottom: 1em;
+}
+
+.shipping-calculator label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: {{settings.color-scheme-text}};
+  font-family: var(--font-body-family);
+  font-weight: 500;
+  font-size: 100%;
+  letter-spacing: var(--font-body-spacing);
+}
+
+.shipping-calculator select,
+.shipping-calculator input[type="text"] {
+  width: 100%;
+  padding: 0.75em 1em;
+  box-sizing: border-box;
+  font-family: var(--font-body-family);
+  font-weight: 500;
+  font-size: 100%;
+  letter-spacing: var(--font-body-spacing);
+  border: 1px solid {{ settings.color-scheme-text }};
+  background-color: transparent;
+  color: {{ settings.color-scheme-text }};
+}
+
+.shipping-calculator #calculate-shipping {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.shipping-rates,
+.errors {
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid #ccc;
+}
+
+.shipping-rates h4,
+.errors h4 {
+  margin-top: 0;
+}
+
+.shipping-rates ul,
+.errors ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shipping-rates ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.shipping-rates li {
+  font-family: var(--font-body-family);
+  font-weight: 500;
+  font-size: 100%;
+  letter-spacing: var(--font-body-spacing);
+  color: {{ settings.color-scheme-text }};
+  padding: 0.5em 0;
+}
+
+.errors li {
+  color: red;
 }
 {% endstyle %}
