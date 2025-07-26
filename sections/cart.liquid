@@ -22,7 +22,9 @@
             {% endif %}
             </td>
             <td>
-              <a>{{ item.quantity }}</a>
+              <span class="quantity-decrement{% if item.quantity == 1 %} disabled{% endif %}">-</span>
+              <span class="quantity-display" data-line-item-id="{{ item.key }}">{{ item.quantity }}</span>
+              <span class="quantity-increment">+</span>
             </td>
             <td class="cart-remove remove-item-button" data-line-item-id="{{ item.key }}">
               <a>Remove</a>
@@ -76,6 +78,47 @@ function removeItemFromCart(lineItemId) {
   });
 };
 
+function incrementItem(lineItemId) {
+  const currentQuantity = parseInt(document.querySelector(`.quantity-display[data-line-item-id="${lineItemId}"]`).textContent);
+  updateCart(lineItemId, currentQuantity + 1);
+}
+
+function decrementItem(lineItemId) {
+  const button = document.querySelector(`.quantity-decrement[data-line-item-id="${lineItemId}"]`);
+  if (button && button.classList.contains('disabled')) {
+    return;
+  }
+
+  const currentQuantity = parseInt(document.querySelector(`.quantity-display[data-line-item-id="${lineItemId}"]`).textContent);
+  if (currentQuantity > 1) {
+    updateCart(lineItemId, currentQuantity - 1);
+  } else {
+    removeItemFromCart(lineItemId);
+  }
+}
+
+function updateCart(lineItemId, newQuantity) {
+  fetch('/cart/update.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      updates: {
+        [lineItemId]: newQuantity
+      }
+    })
+  })
+  .then(response => response.json())
+  .then(cart => {
+    console.log("Cart updated:", cart);
+    window.location.reload();
+  })
+  .catch(error => {
+    console.error("Error updating cart:", error);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const removeButtons = document.querySelectorAll('.remove-item-button');
   removeButtons.forEach(function(button) {
@@ -83,6 +126,22 @@ document.addEventListener('DOMContentLoaded', function() {
       const lineItemId = event.currentTarget.getAttribute('data-line-item-id');
       removeItemFromCart(lineItemId);
       button.innerHTML = "Removing ...";
+    });
+  });
+
+  const incrementButtons = document.querySelectorAll('.quantity-increment');
+  incrementButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      const lineItemId = event.currentTarget.closest('tr').querySelector('.remove-item-button').getAttribute('data-line-item-id');
+      incrementItem(lineItemId);
+    });
+  });
+
+  const decrementButtons = document.querySelectorAll('.quantity-decrement');
+  decrementButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
+      const lineItemId = event.currentTarget.closest('tr').querySelector('.remove-item-button').getAttribute('data-line-item-id');
+      decrementItem(lineItemId);
     });
   });
 });
@@ -141,5 +200,16 @@ document.addEventListener('DOMContentLoaded', function() {
 .remove-item-button {
   cursor:pointer;
   z-index:2;
+}
+
+.quantity-increment,
+.quantity-decrement {
+  cursor: pointer;
+  user-select: none;
+}
+
+.quantity-decrement.disabled {
+  opacity: 0;
+  cursor: default;
 }
 {% endstyle %}
