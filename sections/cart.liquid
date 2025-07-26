@@ -24,7 +24,7 @@
             <td>
               <a>{{ item.quantity }}</a>
             </td>
-            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.variant.id }}">
+            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.key }}">
               <a>Remove</a>
             </td>
             <td>
@@ -55,14 +55,15 @@
 <script>
 
 function removeItemFromCart(lineItemId) {
-  fetch('/cart/change.js', {
+  fetch('/cart/update.js', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      id: lineItemId,
-      quantity: 0
+      updates: {
+        [lineItemId]: 0
+      }
     })
   })
   .then(response => response.json())
