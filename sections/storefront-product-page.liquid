@@ -23,7 +23,7 @@
         {% endif %}
         
         {% for image in product.images %}
-          <img class="product-image-{{ section.id }}" src="{{ image.src | image_url: width: 1080 }}" onclick="modalExpand({{ forloop.index }})">
+          <img class="product-image-{{ section.id }}" src="{{ image.src | image_url: width: 1080 }}" onclick="modalExpand({{ forloop.index }})" alt="{{ image.alt | escape }}" >
         {% endfor %}
 
         {% if product.images.size > 1 %}
