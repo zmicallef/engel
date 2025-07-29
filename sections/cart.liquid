@@ -231,6 +231,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }
 
+.cart-container-{{ section.id }} td:nth-child(odd) {
+  border-top: 1px solid black;
+}
+
 .cart-container-{{ section.id }} .subtotal {
   text-align: center;
   color: {{settings.color-scheme-text}};
