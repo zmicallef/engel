@@ -254,10 +254,16 @@ document.addEventListener('DOMContentLoaded', function() {
 .quantity-decrement {
   cursor: pointer;
   user-select: none;
-  background-color: {{settings.color-scheme-button-bg}};
-  color: {{settings.color-scheme-button-text}};
+  background-color: none;
+  color:{{settings.color-scheme-text}};
   box-sizing:border-box;
   padding:1em;
+}
+
+.quantity-increment:hover,
+.quantity-decrement:hover {
+  background-color: {{settings.color-scheme-button-bg}};
+  color: {{settings.color-scheme-button-text}};  
 }
 
 .shipping-calculator {
