@@ -172,17 +172,17 @@
   cursor:pointer;
 }
 .modal-buttons-{{ section.id }} {
+  position:fixed;
+  top:0;
+  left:0;
   display:flex;
   flex-direction:row;
   width:100vw;
   height:100px;
   background-color:blue;
-  top:0;
-  left:0;
   z-index:3;
 }
 .modal-change-{{ section.id }} {
-  position:fixed;
   pointer-events:all;
   flex:1 1 50%;
   border:1px solid red;
