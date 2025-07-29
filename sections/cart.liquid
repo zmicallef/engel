@@ -5,6 +5,7 @@
     <table>
       <thead>
         <th>ITEM</th>
+        <th></th>
         <th>QTY</th>
         <th>TOTAL</th>
         <th></th>
@@ -14,6 +15,11 @@
           <tr>
             <td>
               <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
+            </td>
+            <td>
+              {% if item.variant.title != "Default Title" %}
+                <a href="{{ item.url }}">{{ item.variant.title }}</a>
+              {% endif %}
             </td>
             <td>
               <span class="quantity-decrement">-</span>
@@ -29,20 +35,6 @@
               <a>Remove</a>
             </td>
           </tr>
-          <tr>
-            <td>
-              {% if item.variant.title != "Default Title" %}
-                <a href="{{ item.url }}">{{ item.variant.title }}</a>
-              {% endif %}
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-          </tr>
-
         {% endfor %}
       </tbody>
     </table>
