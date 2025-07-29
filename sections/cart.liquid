@@ -16,7 +16,7 @@
               <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
             </td>
             <td>
-              <span class="quantity-decrement{% if item.quantity == 1 %} disabled{% endif %}">-</span>
+              <span class="quantity-decrement">-</span>
               <span class="quantity-display" data-line-item-id="{{ item.key }}">{{ item.quantity }}</span>
               <span class="quantity-increment">+</span>
             </td>
@@ -258,11 +258,6 @@ document.addEventListener('DOMContentLoaded', function() {
   color: {{settings.color-scheme-button-text}};
   box-sizing:border-box;
   padding:0.5em;
-}
-
-.quantity-decrement.disabled {
-  opacity: 0;
-  cursor: default;
 }
 
 .shipping-calculator {
