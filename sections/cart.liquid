@@ -5,7 +5,6 @@
     <table>
       <thead>
         <th>ITEM</th>
-        <th></th>
         <th>QTY</th>
         <th>TOTAL</th>
         <th></th>
@@ -20,11 +19,6 @@
                   <br>SIZE: {{ item.variant.title }}
                 {% endif %}
               </a>
-            </td>
-            <td>
-              {% if item.variant.title != "Default Title" %}
-                <a href="{{ item.url }}">{{ item.variant.title }}</a>
-              {% endif %}
             </td>
             <td>
               <span class="quantity-cell">
