@@ -217,7 +217,6 @@
   color:{{settings.color-scheme-button-text}};
   letter-spacing: var(--font-body-spacing);
 }
-
 .modal {
   display: none;
   position: fixed;
@@ -232,7 +231,6 @@
   backdrop-filter: blur(10px);
   cursor:zoom-out;
 }
-
 .modal-content {
   position:absolute;
   display: block;
@@ -245,7 +243,6 @@
     height:auto;
   }
 }
-
 .modal-close {
   display: none;
   position:fixed;
@@ -307,20 +304,19 @@
     };
     slides[slideIndex[slideshowIndex] - 1].style.display = "flex";
   };
-  const imgElement = document.getElementById('imageToggle')
-  let touchstartX = 0;
-  let touchendX = 0;
-  function checkDirection() {
-    if (touchendX < touchstartX) plusSlides(-1, 0);
-    if (touchendX > touchstartX) plusSlides(1, 0);
+  document.onkeydown = checkKey;
+  function checkKey(e) {
+    e = e || window.event;
+    if (e.keyCode == 37) {
+       plusSlides(-1,0);
+    }
+    else if (e.keyCode == 39) {
+       plusSlides(1,0);
+    }
+    else if (e.keyCode == 27) {
+       modal.style.display = "none";
+    }
   };
-  imgElement.addEventListener('touchstart', e => {
-    touchstartX = e.changedTouches[0].screenX;
-  });
-  imgElement.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX;
-    checkDirection()
-  });
   document.addEventListener('DOMContentLoaded', function() {
     const addButton = document.querySelectorAll('.product-add-button-{{ section.id }}');
     addButton.forEach(function(button) {
