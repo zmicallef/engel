@@ -14,7 +14,12 @@
         {% for item in cart.items %}
           <tr>
             <td>
-              <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
+              <a href="{{ item.variant.url }}">
+                {{ item.variant.product.title }}
+                {% if item.variant.title != "Default Title" %}
+                  SIZE: {{ item.variant.title }}
+                {% endif %}
+              </a>
             </td>
             <td>
               {% if item.variant.title != "Default Title" %}
