@@ -40,8 +40,7 @@
       </tbody>
     </table>
     <div class="subtotal">
-      <p>Sub Total : {{ cart.total_price | money_without_currency }} AU</p>
-      <p>Shipping : Calculated at checkout</p>
+      <p>Sub Total : {{ cart.total_price | money_without_currency }} AU + Shipping</p>
       <button type="submit" name="checkout">CHECKOUT</button>
     </div>
   </form>
