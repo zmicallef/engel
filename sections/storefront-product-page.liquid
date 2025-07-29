@@ -348,6 +348,7 @@
       slides[i].style.display = "none";
     };
     slides[slideIndex[slideshowIndex] - 1].style.display = "flex";
+    modalImg.src = slides[slideIndex[slideshowIndex] - 1].src;
   };
   document.onkeydown = checkKey;
   function checkKey(e) {
