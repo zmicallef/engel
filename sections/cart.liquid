@@ -17,9 +17,6 @@
               <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
             </td>
             <td>
-            {% if item.variant.title != "Default Title" %}
-              <a href="{{ item.url }}">{{ item.variant.title }}</a>
-            {% endif %}
             </td>
             <td>
               <span class="quantity-decrement{% if item.quantity == 1 %} disabled{% endif %}">-</span>
@@ -37,12 +34,11 @@
           </tr>
           <tr>
             <td>
-              <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
+              {% if item.variant.title != "Default Title" %}
+                <a href="{{ item.url }}">{{ item.variant.title }}</a>
+              {% endif %}
             </td>
             <td>
-            {% if item.variant.title != "Default Title" %}
-              <a href="{{ item.url }}">{{ item.variant.title }}</a>
-            {% endif %}
             </td>
             <td>
               <span class="quantity-decrement{% if item.quantity == 1 %} disabled{% endif %}">-</span>
