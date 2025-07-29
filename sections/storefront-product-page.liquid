@@ -258,7 +258,6 @@
 .modal {
   display: none;
   position: fixed;
-  overflow:scroll;
   z-index: 3; 
   left: 0;
   top: 0;
@@ -270,7 +269,8 @@
   cursor:zoom-out;
 }
 .modal-content {
-  position:absolute;
+  position:fixed;
+  overflow:scroll;
   display: block;
   top:0;
   left:0;
