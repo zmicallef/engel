@@ -12,6 +12,7 @@
       </thead>
       <tbody>
         {% for item in cart.items %}
+
           <tr>
             <td>
               <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
@@ -35,6 +36,30 @@
               {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
             </td>
           </tr>
+          <tr>
+            <td>
+              <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
+            </td>
+            <td>
+            {% if item.variant.title != "Default Title" %}
+              <a href="{{ item.url }}">{{ item.variant.title }}</a>
+            {% endif %}
+            </td>
+            <td>
+              <span class="quantity-decrement{% if item.quantity == 1 %} disabled{% endif %}">-</span>
+              <span class="quantity-display" data-line-item-id="{{ item.key }}">{{ item.quantity }}</span>
+              <span class="quantity-increment">+</span>
+            </td>
+            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.key }}">
+              <a>Remove</a>
+            </td>
+            <td>
+              {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
+                {{ item.line_price | money }}
+              {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+            </td>
+          </tr>
+
         {% endfor %}
       </tbody>
     </table>
