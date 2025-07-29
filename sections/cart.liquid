@@ -12,7 +12,6 @@
       </thead>
       <tbody>
         {% for item in cart.items %}
-
           <tr>
             <td>
               <a href="{{ item.variant.url }}">{{ item.variant.product.title }}</a>
@@ -231,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }
 
-.cart-container-{{ section.id }} table:nth-child(even) {
+.cart-container-{{ section.id }} tbody:nth-child(odd) {
   border-top: 1px solid black;
 }
 
