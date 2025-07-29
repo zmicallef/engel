@@ -171,7 +171,20 @@
 .slideshow-change-{{ section.id }}:hover {
   cursor:pointer;
 }
+.modal-buttons-{{ section.id }} {
+  position:fixed;
+  display:flex;
+  flex-direction:row;
+  width:100vw;
+  height:100px;
+  background-color:blue;
+  top:0;
+  left:0;
+  z-index:3;
+}
 .modal-change-{{ section.id }} {
+  flex:1 1 50%;
+  border:1px solid red;
   position:fixed;
   top:0;
   left:0;
@@ -184,15 +197,6 @@
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
      flex: 0 1 20% 
   }
-}
-.modal-buttons-{{ section.id }} {
-  position:fixed;
-  width:100vw;
-  height:100px;
-  background-color:blue;
-  top:0;
-  left:0;
-  z-index:3;
 }
 .information-container-{{ section.id }} {
   flex: 0 1 50%;
