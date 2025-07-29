@@ -22,9 +22,11 @@
               {% endif %}
             </td>
             <td>
-              <span class="quantity-decrement">-</span>
-              <span class="quantity-display" data-line-item-id="{{ item.key }}">{{ item.quantity }}</span>
-              <span class="quantity-increment">+</span>
+              <span class="quantity-cell">
+                <span class="quantity-decrement">-</span>
+                <span class="quantity-display" data-line-item-id="{{ item.key }}">{{ item.quantity }}</span>
+                <span class="quantity-increment">+</span>
+              </span>
             </td>
             <td>
               {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
