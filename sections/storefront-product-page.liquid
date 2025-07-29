@@ -298,12 +298,14 @@
 
   var modal = document.getElementById("imageModal");
   var modalClose = document.getElementById("modalClose");
+  var modalButtons = document.getElementById("modalButtons");
   var img = document.getElementsByClassName("product-image-{{ section.id }}");
   var modalImg = document.getElementById("imgModalSrc");
   function modalExpand(i){
     i-=1;
     modal.style.display = "block";
-    modalClose.style.display = "block";    
+    modalClose.style.display = "block";  
+    modalButtons.style.display = "block";  
     modalImg.src = img[i].src;
   };
   modalImg.onclick = function() {
