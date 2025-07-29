@@ -6,8 +6,8 @@
       <thead>
         <th>ITEM</th>
         <th>QTY</th>
-        <th></th>
         <th>TOTAL</th>
+        <th></th>
       </thead>
       <tbody>
         {% for item in cart.items %}
@@ -20,13 +20,13 @@
               <span class="quantity-display" data-line-item-id="{{ item.key }}">{{ item.quantity }}</span>
               <span class="quantity-increment">+</span>
             </td>
-            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.key }}">
-              <a>Remove</a>
-            </td>
             <td>
               {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
                 {{ item.line_price | money }}
               {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+            </td>
+            <td class="cart-remove remove-item-button" data-line-item-id="{{ item.key }}">
+              <a>Remove</a>
             </td>
           </tr>
           <tr>
