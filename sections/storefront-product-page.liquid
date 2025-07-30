@@ -1,12 +1,13 @@
   <div class="product-page-container-{{ section.id }}">
 
        
-    {% if product.images.size > 1 %}
+    {% comment %} {% if product.images.size > 1 %}
       <div id="modalButtons" class="modal-buttons-{{ section.id }}">  
         <div class="modal-change-{{ section.id }}" onclick="plusSlides(-1, 0)"></div>
         <div class="modal-change-{{ section.id }}" onclick="plusSlides(1, 0)"></div>
       </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
+     
     <div id="imageModal" class="modal selectDisable">
       <img class="modal-content" id="imgModalSrc">
     </div> 
