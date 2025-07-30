@@ -335,7 +335,7 @@
       slideIndex[slideshowIndex] = slides.length;
     };
     for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+      {% comment %} slides[i].style.display = "none"; {% endcomment %}
     };
     {% comment %} slides[slideIndex[slideshowIndex] - 1].style.display = "flex"; {% endcomment %}
     modalImg.src = slides[slideIndex[slideshowIndex] - 1].src;
