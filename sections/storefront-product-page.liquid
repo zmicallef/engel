@@ -324,7 +324,7 @@
   } else {
     variantList[0].value = variantUrl;
   };
-  var slideIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  var slideIndex = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   showSlides(1, 0);
   function plusSlides(n, slideshowIndex) {
     showSlides(slideIndex[slideshowIndex] += n, slideshowIndex);
@@ -333,7 +333,7 @@
     var i;
     var slides = document.getElementsByClassName("product-image-{{ section.id }}");
     if (n > slides.length) {
-      slideIndex[slideshowIndex] = 1;
+      slideIndex[slideshowIndex] = 0;
     };
     if (n < 1) {
       slideIndex[slideshowIndex] = slides.length;
