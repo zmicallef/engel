@@ -246,7 +246,7 @@
   left:0;
   width: 100vw;
   height:auto;
-  overflow:auto;
+  overflow:scroll;
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
     max-width:100vw;
     height:auto;
@@ -263,6 +263,7 @@
   height:100vh;
   z-index:4;
   overflow:hidden;
+  pointer-events:none;
 }
 .modal-change-{{ section.id }} {
   flex: 0 1 50%;
