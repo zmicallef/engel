@@ -189,6 +189,8 @@ document.addEventListener('DOMContentLoaded', function() {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  -ms-overflow-style:none;
+  scrollbar-width:none;
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
     width:96vw;
   }
@@ -204,10 +206,6 @@ document.addEventListener('DOMContentLoaded', function() {
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
     width:24vw;
   }
-}
-
-.cart-container-{{ section.id }} tbody:nth-child(even) {
-  
 }
 
 .cart-container-{{ section.id }} .subtotal {
