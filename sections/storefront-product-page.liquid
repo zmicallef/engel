@@ -160,10 +160,9 @@
   cursor:pointer;
 }
 .information-container-{{ section.id }} {
-  position:fixed;
   flex: 0 1 50%;
   height:100%;
-  width:50%;
+  width:100%;
   box-sizing:border-box;
   padding:2em;
   display:flex;
@@ -171,6 +170,7 @@
   align-items:center;
   justify-content:center;
   gap:2em;
+  overflow:hidden;
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
       flex: 0 1 100%;
       justify-content:flex-start;
