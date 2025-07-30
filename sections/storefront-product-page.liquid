@@ -267,6 +267,7 @@
   box-sizing:border-box;
   text-align:center;
   touch-action: manipulation;
+  cursor:pointer;
   border:0.5px solid black;
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
      flex: 0 1 50%; 
@@ -306,7 +307,10 @@
   };
   modalClose.onclick = function() {
     modalCollapse();
-  }
+  };
+  modalImg.onclick = function() {
+    modalCollapse();
+  };
   const variantList = document.querySelectorAll('.VariantSelect')
   function updateVariant() {
     var checkoutButton = document.getElementById('checkoutButton')
