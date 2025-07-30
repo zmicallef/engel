@@ -324,7 +324,7 @@
   } else {
     variantList[0].value = variantUrl;
   };
-  var slideIndex = [1, 1, 1, 1, 1, 1, 1, 1, 1];
+  var slideIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   showSlides(1, 0);
   function plusSlides(n, slideshowIndex) {
     showSlides(slideIndex[slideshowIndex] += n, slideshowIndex);
@@ -342,7 +342,7 @@
       {% comment %} slides[i].style.display = "none"; {% endcomment %}
     };
     {% comment %} slides[slideIndex[slideshowIndex] - 1].style.display = "flex"; {% endcomment %}
-    modalImg.src = slides[slideIndex[slideshowIndex]].src;
+    modalImg.src = slides[slideIndex[slideshowIndex] - 1].src;
   };
   document.onkeydown = checkKey;
   function checkKey(e) {
