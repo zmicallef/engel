@@ -118,8 +118,10 @@
 .slideshow-container-{{ section.id }} {
   flex: 0 1 50%;
   max-width:50vw;
+  height:auto;
   display:flex;
   flex-direction:column;
+  flex-wrap:wrap;
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
       flex: 0 1 100%;
       max-width:100vw;
