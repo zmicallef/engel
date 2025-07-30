@@ -337,7 +337,7 @@
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     };
-    slides[slideIndex[slideshowIndex] - 1].style.display = "flex";
+    {% comment %} slides[slideIndex[slideshowIndex] - 1].style.display = "flex"; {% endcomment %}
     modalImg.src = slides[slideIndex[slideshowIndex] - 1].src;
   };
   document.onkeydown = checkKey;
