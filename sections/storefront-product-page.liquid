@@ -1,13 +1,12 @@
   <div class="product-page-container-{{ section.id }}">
 
        
-    {% comment %} {% if product.images.size > 1 %}
+    {% if product.images.size > 1 %}
       <div id="modalButtons" class="modal-buttons-{{ section.id }}">  
         <div class="modal-change-{{ section.id }}" onclick="plusSlides(-1, 0)"></div>
         <div class="modal-change-{{ section.id }}" onclick="plusSlides(1, 0)"></div>
       </div>
-    {% endif %} {% endcomment %}
-     
+    {% endif %}
     <div id="imageModal" class="modal selectDisable">
       <img class="modal-content" id="imgModalSrc">
     </div> 
@@ -19,7 +18,7 @@
       
       <div id="imageToggle" class="toggle-image-{{ section.id }}">
 
-        {% if product.images.size > 1 %}
+        {% comment %} {% if product.images.size > 1 %}
           <div class="slideshow-change-{{ section.id }}" onclick="plusSlides(-1, 0)">
             <svg height="10px" width="10px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 66.91 122.88" style="enable-background:new 0 0 66.91 122.88" xml:space="preserve">
               <g>
@@ -27,13 +26,13 @@
               </g>
             </svg> 
           </div>
-        {% endif %}
+        {% endif %} {% endcomment %}
         
         {% for image in product.images %}
           <img class="product-image-{{ section.id }}" src="{{ image.src | image_url: width: 1080 }}" onclick="modalExpand({{ forloop.index0 }})" >
         {% endfor %}
 
-        {% if product.images.size > 1 %}
+        {% comment %} {% if product.images.size > 1 %}
           <div class="slideshow-change-{{ section.id }}" onclick="plusSlides(1, 0)">
             <svg height="10px" width="10px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 66.91 122.88" style="enable-background:new 0 0 66.91 122.88" xml:space="preserve">
               <g>
@@ -41,7 +40,7 @@
               </g>
             </svg>
           </div>
-        {% endif %}
+        {% endif %} {% endcomment %}
         
       </div>
     </div>
