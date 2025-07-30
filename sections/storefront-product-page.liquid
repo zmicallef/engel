@@ -29,7 +29,7 @@
         {% endif %}
         
         {% for image in product.images %}
-          <img class="product-image-{{ section.id }}" src="{{ image.src | image_url: width: 1080 }}" onclick="modalExpand({{ forloop.index }})" >
+          <img class="product-image-{{ section.id }}" src="{{ image.src | image_url: width: 1080 }}" onclick="modalExpand({{ forloop.index0 }})" >
         {% endfor %}
 
         {% if product.images.size > 1 %}
@@ -260,7 +260,7 @@
   align-items:center;
   justify-content:center;
   width:100vw;
-  height:100%;
+  height:100vh;
   z-index:4;
 }
 .modal-change-{{ section.id }} {
@@ -298,7 +298,6 @@
   var img = document.getElementsByClassName("product-image-{{ section.id }}");
   var modalImg = document.getElementById("imgModalSrc");
   function modalExpand(i){
-    i-=1;
     modal.style.display = "flex";
     modalClose.style.display = "block";  
     modalButtons.style.display = "flex";  
