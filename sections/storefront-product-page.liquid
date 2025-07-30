@@ -118,11 +118,6 @@
 .slideshow-container-{{ section.id }} {
   flex: 0 1 50%;
   max-width:50vw;
-  height:auto;
-  display:flex;
-  flex-direction:column;
-  flex-wrap:wrap;
-  overflow:scroll;
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
       flex: 0 1 100%;
       max-width:100vw;
@@ -132,9 +127,9 @@
     height:100%;
     width:100%;
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     cursor:zoom-in;
 }
 .product-image-{{ section.id }} {
