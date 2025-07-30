@@ -260,6 +260,7 @@
   width:100vw;
   height:100vh;
   z-index:4;
+  pointer-events:none;
 }
 .modal-change-{{ section.id }} {
   flex: 0 0 50%;
@@ -269,6 +270,7 @@
   touch-action: manipulation;
   cursor:pointer;
   border:0.5px solid black;
+  pointer-events:all;
   @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
      flex: 0 1 50%; 
   }
