@@ -304,9 +304,9 @@
   var modalImg = document.getElementById("imgModalSrc");
   function modalExpand(i){
     i-=1;
-    modal.style.display = "block";
+    modal.style.display = "flex";
     modalClose.style.display = "block";  
-    modalButtons.style.display = "block";  
+    modalButtons.style.display = "flex";  
     modalImg.src = img[i].src;
   };
   function modalCollapse(){
