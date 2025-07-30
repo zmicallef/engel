@@ -1,15 +1,4 @@
-before we move onto requirements checklist i wanna iron out a couple issues that i cannot figure out lol 
-
-X having issues with the remove from cart button, sometimes it removes other variants other than the one clicked ?? i am unsure
-e.g. the first coat with the size variants, if you add multiple sizes/colours and click remove in cart it sometimes removes multiple
-
-X would be good to have a button that removes 1 from the cart, unsure how to do this 
-
-* i want to add auto currency detection if possible, might require a cookies popup???
-
-X want to add shipping estimate thingy to cart page 
-
-i think thats it for current, once all thats implemented we can start handing it out and get feedback as we dev
+final thing i can think of is on add to cart / remove from cart i have it setup with an async wait function so that it has time to update before force refresh. idk if this is a good way to do it?? seems like there's probably a better way
 
 
 https://shopify.dev/docs/storefronts/themes/store/requirements
