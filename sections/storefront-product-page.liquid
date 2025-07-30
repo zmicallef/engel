@@ -310,10 +310,13 @@
     modalButtons.style.display = "block";  
     modalImg.src = img[i].src;
   };
-  modalImg.onclick = function() {
+  function modalCollapse(){
     modal.style.display = "none";
     modalClose.style.display = "none";
     modalButtons.style.display = "none";
+  };
+  modalImg.onclick = function() {
+    modalCollapse();
   };
   const variantList = document.querySelectorAll('.VariantSelect')
   function updateVariant() {
@@ -358,9 +361,7 @@
        plusSlides(1,0);
     }
     else if (e.keyCode == 27) {
-       modal.style.display = "none";
-      modalClose.style.display = "none";
-      modalButtons.style.display = "none";
+      modalCollapse();
     }
   };
   document.addEventListener('DOMContentLoaded', function() {
