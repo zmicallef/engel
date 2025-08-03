@@ -1,10 +1,10 @@
-[review] final thing i can think of is on add to cart / remove from cart i have it setup with an async wait function so that it has time to update before force refresh. idk if this is a good way to do it?? seems like there's probably a better way
+✅ COMPLETED: Fixed cart total race condition - rapid quantity changes now cancel previous API calls, preventing slow incremental updates
 
 [review] updating cart from all pages i can think of that touch cart
 
 [review] moved css to top of some pages, cause i was getting some weird pop in thing on cart after the DOM change stuff. Moving it to top fixed issue. 
 
-
+[discuss] the iOS zoom on tap stuff happens when font size is under 16px. We can get around it by disabling zoom on page. This may impact accessability, but i cannot find any specific requirements for zoom, or pinch zoom on the theme requirements page. It is specifically mentioned under their "gesture support accessability best practices" though: https://shopify.dev/docs/storefronts/themes/best-practices/accessibility 
 
 
 https://shopify.dev/docs/storefronts/themes/store/requirements
