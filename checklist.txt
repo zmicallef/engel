@@ -1,4 +1,10 @@
-final thing i can think of is on add to cart / remove from cart i have it setup with an async wait function so that it has time to update before force refresh. idk if this is a good way to do it?? seems like there's probably a better way
+[review] final thing i can think of is on add to cart / remove from cart i have it setup with an async wait function so that it has time to update before force refresh. idk if this is a good way to do it?? seems like there's probably a better way
+
+[review] updating cart from all pages i can think of that touch cart
+
+[review] moved css to top of some pages, cause i was getting some weird pop in thing on cart after the DOM change stuff. Moving it to top fixed issue. 
+
+
 
 
 https://shopify.dev/docs/storefronts/themes/store/requirements

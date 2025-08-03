@@ -6,7 +6,7 @@
     <a href="../"><img src='{{ section.settings.header-image.src | image_url: width: 1080 }}'></a>
   </div>
   <div class="header-cart-button-{{ section.id }}">
-    <a href="../cart">Cart ({{ cart.item_count }}) {{ cart.total_price | money_without_currency }} $</a>
+    <a href="../cart" id="cart-indicator">Cart (<span id="cart-count">{{ cart.item_count }}</span>) <span id="cart-total">{{ cart.total_price | money_without_currency }}</span> $</a>
   </div>
 </div>
 
@@ -17,6 +17,24 @@
     headerItem[0].style.display = "block";
   } else {
     headerItem[0].style.display = "none";
+  };
+
+  // Global cart indicator update function
+  window.updateCartIndicator = function(itemCount, totalPrice) {
+    const cartCountElement = document.getElementById('cart-count');
+    const cartTotalElement = document.getElementById('cart-total');
+    
+    if (cartCountElement) {
+      cartCountElement.textContent = itemCount;
+    }
+    
+    if (cartTotalElement && totalPrice !== undefined) {
+      const formatter = new Intl.NumberFormat('en-AU', { 
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2 
+      });
+      cartTotalElement.textContent = formatter.format(totalPrice / 100);
+    }
   };
   
 </script>
